@@ -16,17 +16,17 @@ runs:
         node-version: 18
 
     - name: Install dependencies
-      run: npm install --prefix books-nodejs-app
+      run: npm install
       shell: bash
 
     - name: Start Node.js App
       if: ${{ inputs.action == 'start' }}
       shell: bash
       run: |
-        npm run start-pm2 --prefix books-nodejs-app
+        npm run start-pm2
         sleep 20
 
     - name: Stop Node.js App
       if: ${{ inputs.action == 'stop' }}
       shell: bash
-      run: npm run stop-pm2 --prefix books-nodejs-app
+      run: npm run stop-pm2
