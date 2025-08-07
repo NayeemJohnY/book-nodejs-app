@@ -10,8 +10,7 @@ runs:
   using: "composite"
 
   steps:
-
-    - name: Checkout Node.js Repo
+    - name: Checkout Node.js App repo
       uses: actions/checkout@v4
 
     - name: Set up Node.js
@@ -20,17 +19,17 @@ runs:
         node-version: 18
 
     - name: Install dependencies
-      run: npm install
+      run: npm install --prefix books-nodejs-app
       shell: bash
 
     - name: Start Node.js App
       if: ${{ inputs.action == 'start' }}
       shell: bash
       run: |
-        npm run start-pm2
+        npm run start-pm2 --prefix books-nodejs-app
         sleep 20
 
     - name: Stop Node.js App
       if: ${{ inputs.action == 'stop' }}
       shell: bash
-      run: npm run stop-pm2
+      run: npm run stop-pm2 --prefix books-nodejs-app
