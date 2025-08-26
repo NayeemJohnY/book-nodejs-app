@@ -46,7 +46,7 @@ app.use((req, res, next) => {
 
 const limiter = rateLimit({
     windowMs: 60 * 1000, // 1 minute
-    max: 15,
+    max: process.env.maxRequests || 15,
     message: { error: 'Too many requests. Slow down.' }
 });
 
